@@ -20,7 +20,7 @@ const loop = new Loop({
 
 ## API
 
-#### [LoopParameters](#loop-parameters)
+#### [interface LoopParameters](#loop-parameters)
 
 | Name              | Required? | Type                                    | Default value  | Description                                               |
 |-------------------|-----------|-----------------------------------------|----------------|-----------------------------------------------------------|
@@ -30,29 +30,34 @@ const loop = new Loop({
 | startWithoutDelay | No        | boolean                                 | false          | should the callback be called immediately                 |
 | targetTimeout     | No        | number &#124; undefined                      | undefined      | target timeout, tick on every frame not guaranteed if set |
 
-#### [Loop(config: LoopParameters)](#loop)
+#### [class Loop(config: LoopParameters)](#loop)
 `````ts
 import { Loop, LoopParameters, DeltaTimeFormat } from 'typed-loop';
 
 const conf: LoopParameters = {
-  onTick: () => {},
+  onTick: (deltaTime) => {
+    console.log(`Last tick happened ${deltaTime} seconds ago`);
+  },
   startWithoutDelay: true,
-  deltaTimeFormat: DeltaTimeForma.relative
+  deltaTimeFormat: DeltaTimeFormat.SECONDS
 };
 
 const loop = new Loop(config).start();
 
+// --> Last tick happened 0.017 seconds ago
+// --> Last tick happened 0.016 seconds ago
+
 setTimeout(() => {
   loop.stop();
-}, 5000);
+}, 36);
 `````
 
 ### Methods
 
-#### [start(): self](#start)
+#### [#start(): self](#start)
 Starts the loop.
 
-#### [stop(): void](#stop)
+#### [#stop(): void](#stop)
 Stops the loop.
 
 ## Additional info
@@ -95,3 +100,7 @@ new Loop({
   })
 }).start();
 ````
+
+## How to contribute
+
+Open issue or make a PR if it's a simple patch or quick feature.
