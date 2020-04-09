@@ -22,10 +22,10 @@ const loop = new Loop({
 | Name              | Required? | Type                                    | Default value  | Description                                               |
 |-------------------|-----------|-----------------------------------------|----------------|-----------------------------------------------------------|
 | onTick            | Yes       | (deltaTime: number) => any              | undefined      | callback function to be called on every tick of the loop  |
-| deltaTimeFormat   | No        | 'relative' | 'milliseconds' | 'seconds' | 'milliseconds' | how the delta time should be formatted                    |
-| deltaTimeLimit    | No        | number | undefined                      | undefined      | maximum delta time in milliseconds                        |
+| deltaTimeFormat   | No        | 'relative' &#124; 'milliseconds' &#124; 'seconds' | 'milliseconds' | how the delta time should be formatted                    |
+| deltaTimeLimit    | No        | number &#124; undefined                      | undefined      | maximum delta time in milliseconds                        |
 | startWithoutDelay | No        | boolean                                 | false          | should the callback be called immediately                 |
-| targetTimeout     | No        | number | undefined                      | undefined      | target timeout, tick on every frame not guaranteed if set |
+| targetTimeout     | No        | number &#124; undefined                      | undefined      | target timeout, tick on every frame not guaranteed if set |
 
 #### [Loop(config: LoopParameters)](#loop)
 `````ts
