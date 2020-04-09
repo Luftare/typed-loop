@@ -3,6 +3,9 @@
 A loop class to enable flexible intervals for visual experiments and games. It provides delta time in various formats and uses `requestAnimationFrame` for the timeouts. It's possible to use `setTimeout` with given `targetDeltaTime`.
 
 ## How to use
+
+Install by issuing `npm i typed-loop`.
+
 This module exports a `Loop` class,  `DeltaTimeFormat` enum and `LoopParameters` interface.
 
 `````ts
