@@ -39,6 +39,35 @@ describe('Loop', () => {
     });
   });
 
+  describe('stop()', () => {
+    describe('with requestAnimationFrame', () => {
+      it('should stop and cancel next tick', () => {
+        setupTest({ onTick: mockOnTick });
+        setFrameDuration(16);
+        
+        loop.start();
+        jest.advanceTimersByTime(16);
+        loop.stop();
+        jest.advanceTimersByTime(17);
+
+        expect(mockOnTick).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    describe('with setTimeout', () => {
+      it('should stop and cancel next tick', () => {
+        setupTest({ onTick: mockOnTick, targetTimeout: 10 });
+        
+        loop.start();
+        jest.advanceTimersByTime(10);
+        loop.stop();
+        jest.advanceTimersByTime(15);
+
+        expect(mockOnTick).toHaveBeenCalledTimes(1);
+      });
+    });
+  });
+
   describe('when started', () => {
     let mockTime: number;
 

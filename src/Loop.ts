@@ -26,6 +26,7 @@ export class Loop {
   private startWithoutDelay: boolean;
   private timeoutFunction: TimeoutFunction;
   private targetTimeout: number | undefined;
+  private timeoutId: number;
 
   static estimatedDeltaTimeMs = 16;
 
@@ -44,6 +45,7 @@ export class Loop {
     this.startWithoutDelay = startWithoutDelay;
     this.deltaTimeFormat = deltaTimeFormat;
     this.lastTickTime = 0;
+    this.timeoutId = 0;
     this.active = false;
 
     this.tick = this.tick.bind(this); // to enable method reference passing directly to timeout functions
@@ -65,6 +67,11 @@ export class Loop {
 
   stop() {
     this.active = false;
+    if(this.timeoutFunction === TimeoutFunction.REQUEST_ANIMATION_FRAME) {
+      cancelAnimationFrame(this.timeoutId);
+    } else {
+      clearTimeout(this.timeoutId);
+    }
   }
 
   private tick() {
@@ -95,9 +102,9 @@ export class Loop {
     this.lastTickTime = currentTime;
 
     if (this.timeoutFunction === TimeoutFunction.SET_TIMEOUT) {
-      setTimeout(this.tick, this.targetTimeout);
+      this.timeoutId = setTimeout(this.tick, this.targetTimeout);
     } else {
-      requestAnimationFrame(this.tick);
+      this.timeoutId = requestAnimationFrame(this.tick);
     }
   }
 }
