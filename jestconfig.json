@@ -1,0 +1,9 @@
+{
+  "transform": {
+    "^.+\\.(t|j)sx?$": "ts-jest"
+  },
+  "moduleFileExtensions": [
+    "ts",
+    "js"
+  ]
+}

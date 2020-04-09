@@ -1,0 +1,30 @@
+{
+  "name": "typed-loop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/Loop.js",
+  "scripts": {
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "test": "jest --config jestconfig.json",
+    "test:watch": "jest --config jestconfig.json --watchAll",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "build": "tsc",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.11.0",
+    "jest": "^25.2.1",
+    "prettier": "^2.0.4",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3",
+    "tslint": "^6.1.1",
+    "tslint-config-prettier": "^1.18.0"
+  }
+}
