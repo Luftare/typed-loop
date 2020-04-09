@@ -1,8 +1,12 @@
 {
   "name": "typed-loop",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "",
   "main": "lib/Loop.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luftare/typed-loop"
+  },
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
@@ -14,7 +18,13 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "keywords": [],
+  "keywords": [
+    "timeout",
+    "loop",
+    "gameloop",
+    "interval",
+    "delta-time"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
